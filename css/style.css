@@ -6,6 +6,10 @@
   list-style: none;
 }
 
+.d-none {
+  display: none;
+}
+
 button {
   cursor: pointer;
 }
@@ -22,6 +26,7 @@ html {
 
 nav {
   background-color: #008080;
+  color: #fff;
   height: 100px;
 }
 nav .container .row {
@@ -34,9 +39,22 @@ nav .container .row .brand .brand-text {
   color: #fff;
   font-size: 40px;
 }
+nav .container .row .fries {
+  border: 1px solid #fff;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+nav .container .row .fries img {
+  width: 32px;
+  height: 32px;
+}
 nav .container .row ul {
   display: flex;
   gap: 8px;
+}
+nav .container .row ul .active {
+  background-color: #fff;
+  color: #008080;
 }
 nav .container .row ul li {
   padding: 10px 16px;
@@ -44,19 +62,81 @@ nav .container .row ul li {
 }
 nav .container .row ul li:hover {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+  color: #008080;
 }
 nav .container .row ul li a {
+  font-size: 18px;
+  color: inherit;
+  font-weight: bold;
+}
+nav .container input:checked + .mobile-row {
+  display: block;
+}
+nav .container .mobile-row {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  background-color: #008080;
+}
+nav .container .mobile-row > label {
+  height: 10vh;
+  display: flex;
+  justify-content: end;
+  margin-bottom: 1rem;
+}
+nav .container .mobile-row > label img {
+  width: 36px;
+  margin-right: 1rem;
+}
+nav .container .mobile-row ul {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+}
+nav .container .mobile-row ul .active {
+  background-color: #fff;
+  color: #808080;
+}
+nav .container .mobile-row ul li {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  padding: 16px 30px;
+  border-radius: 2px;
+}
+nav .container .mobile-row ul li:hover {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+}
+nav .container .mobile-row ul li:hover a {
+  color: #008080;
+}
+nav .container .mobile-row ul li a {
   font-size: 18px;
   color: #fff;
   font-weight: bold;
 }
 
+@media screen and (max-width: 768px) {
+  nav .container .row .fries {
+    display: block;
+  }
+  nav .container .row ul {
+    display: none;
+  }
+}
 section.hero {
   padding: 3.5rem 0;
 }
 section.hero .container .row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 3rem;
   align-items: center;
 }

@@ -7,6 +7,10 @@
 
 }
 
+.d-none {
+  display: none;
+}
+
 button {
   cursor: pointer;
 }
@@ -14,6 +18,7 @@ button {
 html {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
 .container {
   max-width: 1350px;
   padding: 0 1rem;
@@ -22,6 +27,7 @@ html {
 
 nav {
   background-color: #008080;
+  color: #fff;
   height: 100px;
 
   .container {
@@ -38,23 +44,121 @@ nav {
         }
       }
 
+      .fries {
+        border: 1px solid #fff;
+        padding: 10px 16px;
+        cursor: pointer;
+
+        img {
+          width: 32px;
+          height: 32px;
+        }
+      }
+
       ul {
         display: flex;
         gap: 8px;
 
+        .active {
+          background-color: #fff;
+          color: #008080;
+        }
+
         li {
-          &:hover{
-            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
-            // font-size: 110%;
-          }
-          // box-shadow: 0 2px 2px #66666666;
           padding: 10px 16px;
           border-radius: 2px;
+
+          &:hover {
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+            background-color: #fff;
+            color: #008080;
+          }
+          a {
+            font-size: 18px;
+            color: inherit;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    input:checked+.mobile-row {
+      display: block;
+    }
+
+    .mobile-row {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 2;
+      background-color: #008080;
+
+      &>label {
+        height: 10vh;
+        display: flex;
+        justify-content: end;
+
+        img {
+          width: 36px;
+          margin-right: 1rem;
+        }
+
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        height: 60vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column wrap;
+
+        .active {
+          background-color: #fff;
+          color: #808080;
+        }
+
+        li {
+          margin-bottom: .5rem;
+          font-size: 2rem;
+
+          &:hover {
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+            background-color: #fff;
+
+            a {
+              color: #008080;
+            }
+          }
+
+          padding: 16px 30px;
+          border-radius: 2px;
+
           a {
             font-size: 18px;
             color: #fff;
             font-weight: bold;
           }
+        }
+      }
+
+    }
+  }
+}
+
+@media screen and (max-width:768px) {
+  nav {
+    .container {
+      .row {
+        .fries {
+          display: block;
+        }
+
+        ul {
+          display: none;
         }
       }
     }
@@ -67,20 +171,23 @@ section.hero {
   .container {
     .row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 3rem;
       align-items: center;
-      .left-column{
-        .heading{
+
+      .left-column {
+        .heading {
           font-size: 48px;
           line-height: 56px;
           margin-bottom: 8px;
         }
-        .subheading{
+
+        .subheading {
           font-size: 30px;
           line-height: 36px;
         }
       }
+
       .right-column {
         img {
           width: 100%;
